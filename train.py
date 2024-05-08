@@ -63,6 +63,7 @@ alpha = 1.0 - model_ema_decay
 alpha = min(1.0, alpha * adjust)
 model_ema = ExponentialMovingAverage(model, device=device, decay=1.0 - alpha)
 
+
 optimizer=AdamW(model.parameters(),lr=lr)
 scheduler=OneCycleLR(optimizer,lr,total_steps=epochs*len(train_dataloader),pct_start=0.25,anneal_strategy='cos')
 loss_fn=nn.MSELoss(reduction='mean')
